@@ -1,0 +1,15 @@
+E:\an3\sem2\SD\Project\Project\bin\Debug\Project.exe.config
+E:\an3\sem2\SD\Project\Project\bin\Debug\Project.exe
+E:\an3\sem2\SD\Project\Project\bin\Debug\Project.pdb
+E:\an3\sem2\SD\Project\Project\bin\Debug\AForge.dll
+E:\an3\sem2\SD\Project\Project\bin\Debug\AForge.Video.DirectShow.dll
+E:\an3\sem2\SD\Project\Project\bin\Debug\AForge.Video.dll
+E:\an3\sem2\SD\Project\Project\bin\Debug\DarrenLee.Media.dll
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.Form1.resources
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.Properties.Resources.resources
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.csproj.GenerateResource.cache
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.csproj.CoreCompileInputs.cache
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.csproj.CopyComplete
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.exe
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.pdb
+E:\an3\sem2\SD\Project\Project\obj\Debug\Project.csprojAssemblyReference.cache

@@ -1,0 +1,14 @@
+E:\an3\sem2\SD\Project\Project\bin\Release\Project.exe.config
+E:\an3\sem2\SD\Project\Project\bin\Release\Project.exe
+E:\an3\sem2\SD\Project\Project\bin\Release\Project.pdb
+E:\an3\sem2\SD\Project\Project\bin\Release\AForge.dll
+E:\an3\sem2\SD\Project\Project\bin\Release\AForge.Video.DirectShow.dll
+E:\an3\sem2\SD\Project\Project\bin\Release\AForge.Video.dll
+E:\an3\sem2\SD\Project\Project\bin\Release\DarrenLee.Media.dll
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.Form1.resources
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.Properties.Resources.resources
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.csproj.GenerateResource.cache
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.csproj.CoreCompileInputs.cache
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.csproj.CopyComplete
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.exe
+E:\an3\sem2\SD\Project\Project\obj\Release\Project.pdb
