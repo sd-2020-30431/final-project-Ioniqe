@@ -21,8 +21,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "banane",
+            BasePath = "cu ciocolata"
         };
 
         IFirebaseClient client;
@@ -59,9 +59,7 @@ namespace Project
             else
             {
 
-                //string username, password;
                 int counter = 1;
-                //FirebaseResponse response = client.Get(@"User/" + counter++);
 
                 FirebaseResponse response = await client.GetTaskAsync(@"User/" + counter);
                 counter++;
