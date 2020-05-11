@@ -26,11 +26,11 @@ namespace Project
 
         //---------------
         // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "c136b8ab43d740bd80735e3be98551a6";
+        const string subscriptionKey = "nono";
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "secret discret";
 
         //---------------
 
@@ -76,14 +76,9 @@ namespace Project
 
         private void captureButt_Click(object sender, EventArgs e)
         {
-            //string filename = Application.StartupPath + @"\" + "Image" + count.ToString(); //E:\an3\sem2\SD\Images
-            //string filename = @"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString(); //--good one
-            //string filename = @"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image";
+
             string filename = @"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image"+count.ToString();
             myCamera.Capture(filename);
-    
-
-            //Process.Start(@"E:\an3\sem2\SD\Project\Project\bin\Debug\Images"); //open file location of captured image
 
             results.Text = "Captured";
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -108,12 +103,10 @@ namespace Project
                 try
                 {
                     MakeAnalysisRequest(imageFilePath);
-                    //results.Text = "\nWait a moment for the results to appear.\n";
 
                 }
                 catch (Exception e)
                 {
-                    //results.Text = "\n" + e.Message + "\nPress Enter to exit...\n";
                     MessageBox.Show("ERROR");
                 }
             }
@@ -131,14 +124,6 @@ namespace Project
             // Request headers.
             client.DefaultRequestHeaders.Add(
                 "Ocp-Apim-Subscription-Key", subscriptionKey);
-
-            // Request parameters. A third optional parameter is "details".
-            //string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-            //    "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
-            //    "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
-
-            //string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-            //    "&returnFaceAttributes=emotion";
 
             string requestParameters = "returnFaceId=false&returnFaceLandmarks=false" +
             "&returnFaceAttributes=emotion";
