@@ -26,11 +26,11 @@ namespace Project
 
         //---------------
         // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "nono";
+        const string subscriptionKey = "c136b8ab43d740bd80735e3be98551a6";
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "secret discret";
+            "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
 
         //---------------
 
@@ -55,7 +55,7 @@ namespace Project
                 cameraResolution.Items.Add(r);
             }
 
-            cameraResolution.SelectedIndex = 7;
+            cameraResolution.SelectedIndex = 6;
         }
 
         public void MyCamera_OnFrameArrived(object source, FrameArrivedEventArgs e)
@@ -77,13 +77,13 @@ namespace Project
         private void captureButt_Click(object sender, EventArgs e)
         {
 
-            string filename = @"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image"+count.ToString();
+            string filename = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString();
             myCamera.Capture(filename);
-
+    
             results.Text = "Captured";
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            pictureBox2.Image = Image.FromFile(@"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString() + @".jpg");
+            pictureBox2.Image = Image.FromFile(@"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString() + @".jpg");
             count++;
         }
 
@@ -96,7 +96,7 @@ namespace Project
         private void launchEmotionDetection()
         {
             int cnt = count - 1;
-            string imageFilePath = @"E:\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
+            string imageFilePath = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
 
             if (File.Exists(imageFilePath))
             {
@@ -114,14 +114,12 @@ namespace Project
             {
                 //results.Text = "\nInvalid file path.\nPress Enter to exit...\n";
             }
-            //Console.ReadLine();
         }
 
         async void MakeAnalysisRequest(string imageFilePath)
         {
             HttpClient client = new HttpClient();
 
-            // Request headers.
             client.DefaultRequestHeaders.Add(
                 "Ocp-Apim-Subscription-Key", subscriptionKey);
 
@@ -138,9 +136,7 @@ namespace Project
 
             using (ByteArrayContent content = new ByteArrayContent(byteData))
             {
-                // This example uses content type "application/octet-stream".
-                // The other content types you can use are "application/json"
-                // and "multipart/form-data".
+
                 content.Headers.ContentType =
                     new MediaTypeHeaderValue("application/octet-stream");
 
@@ -150,14 +146,10 @@ namespace Project
                 // Get the JSON response.
                 string contentString = await response.Content.ReadAsStringAsync();
 
-                // Display the JSON response.
-
-                //results.Text = "\nResponse:\n";
-                
                 string json_data = format_json(contentString);
 
                 JSON_Data data = JsonConvert.DeserializeObject<JSON_Data>(json_data);
-                //results.Text = emotion.ToJson();
+
                 string emotion = getStrongest_Emotion(data.FaceAttributes.Emotion);
                 results.Text = emotion;
 

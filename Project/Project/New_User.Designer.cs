@@ -101,7 +101,7 @@
             // 
             this.create_new_user_Butt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.create_new_user_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(135)))));
-            this.create_new_user_Butt.Location = new System.Drawing.Point(61, 215);
+            this.create_new_user_Butt.Location = new System.Drawing.Point(200, 215);
             this.create_new_user_Butt.Margin = new System.Windows.Forms.Padding(0);
             this.create_new_user_Butt.Name = "create_new_user_Butt";
             this.create_new_user_Butt.Size = new System.Drawing.Size(117, 41);
@@ -172,7 +172,7 @@
             // 
             this.back_Butt.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.back_Butt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(175)))), ((int)(((byte)(135)))));
-            this.back_Butt.Location = new System.Drawing.Point(202, 215);
+            this.back_Butt.Location = new System.Drawing.Point(61, 215);
             this.back_Butt.Margin = new System.Windows.Forms.Padding(0);
             this.back_Butt.Name = "back_Butt";
             this.back_Butt.Size = new System.Drawing.Size(117, 41);

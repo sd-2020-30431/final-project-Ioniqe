@@ -21,8 +21,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "banane",
-            BasePath = "cu ciocolata"
+            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
+            BasePath = "https://soul-song-782cd.firebaseio.com/"
         };
 
         IFirebaseClient client;
@@ -40,10 +40,24 @@ namespace Project
             this.Close();
         }
 
-        private void verifyLogin(string username, string password)
+        private void verifyLogin(User user)
         {
-            if (username_textbox.Text == username && password_textbox.Text == password)
-                nextForm();
+            if (username_textbox.Text == user.Username && password_textbox.Text == user.Password)
+            {
+                if(user.Type == "admin")
+                {
+                    this.Hide();
+                    Admin_Form form = new Admin_Form();
+                    form.ShowDialog();
+                    this.Close();
+                }
+                else
+                {
+                    nextForm();
+                }
+                    
+
+            }
 
         }
 
@@ -59,7 +73,9 @@ namespace Project
             else
             {
 
+                //string username, password;
                 int counter = 1;
+                //FirebaseResponse response = client.Get(@"User/" + counter++);
 
                 FirebaseResponse response = await client.GetTaskAsync(@"User/" + counter);
                 counter++;
@@ -70,7 +86,7 @@ namespace Project
                     try
                     {
                         User user = response.ResultAs<User>();
-                        verifyLogin(user.Username, user.Password);
+                        verifyLogin(user);
 
                         response = await client.GetTaskAsync(@"User/" + counter);
                         counter++;

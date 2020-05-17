@@ -20,8 +20,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "batman",
-            BasePath = "robin"
+            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
+            BasePath = "https://soul-song-782cd.firebaseio.com/"
         };
 
         IFirebaseClient client;
@@ -108,7 +108,8 @@ namespace Project
                     {
                         Id = counter.ToString(),
                         Username = username_textbox.Text,
-                        Password = password_textbox.Text
+                        Password = password_textbox.Text,
+                        Type = "client"
                     };
 
                     response = client.Set("User/" + counter, user);
