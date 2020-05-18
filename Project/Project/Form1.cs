@@ -26,11 +26,11 @@ namespace Project
 
         //---------------
         // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "c136b8ab43d740bd80735e3be98551a6";
+        const string subscriptionKey = "";
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "";
 
         //---------------
 
@@ -77,7 +77,7 @@ namespace Project
         private void captureButt_Click(object sender, EventArgs e)
         {
 
-            string filename = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString();
+            string filename = @"" + count.ToString();
             myCamera.Capture(filename);
     
             results.Text = "Captured";
@@ -96,7 +96,7 @@ namespace Project
         private void launchEmotionDetection()
         {
             int cnt = count - 1;
-            string imageFilePath = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
+            string imageFilePath = @"" + cnt.ToString() + @".jpg";
 
             if (File.Exists(imageFilePath))
             {
