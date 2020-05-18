@@ -29,8 +29,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "",
+            BasePath = ""
         };
 
         IFirebaseClient client;
@@ -82,13 +82,6 @@ namespace Project
 
             var res = client.Get("Song/2/");
             Song song = res.ResultAs<Song>();
-            //results.Text = song.File;
-
-
-            //byte[] data = File.ReadAllBytes(@"B:\poli\an3\sem2\SD\songs\Ceux_Qui_Rêvent.mp3");
-            //string encoded = Convert.ToBase64String(data); //asta trebe pus in Firebase
-            //byte[] convertedData = Convert.FromBase64String(encoded);
-
 
             string encoded = song.File1 + song.File2 + song.File3 +
                 song.File4 + song.File5 + song.File6 + song.File7 +
@@ -107,7 +100,3 @@ namespace Project
         }
     }
 }
-
-//TODO
-//if user, after emotion winform => take all those songs that have the according emotion
-//make the winform display all downloaded mp3 files
