@@ -21,8 +21,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "",
-            BasePath = ""
+            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
+            BasePath = "https://soul-song-782cd.firebaseio.com/"
         };
 
         IFirebaseClient client;
@@ -37,7 +37,15 @@ namespace Project
             this.Hide();
             Form1 f1 = new Form1();
             f1.ShowDialog();
-            this.Close();
+            //this.Close();
+            this.Dispose();
+
+            //using (Form1 f1 = new Form1())
+            //{
+            //    this.Hide();
+            //    f1.ShowDialog();
+            //    this.Close();
+            //}
         }
 
         private void verifyLogin(User user)

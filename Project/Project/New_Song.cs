@@ -18,7 +18,7 @@ namespace Project
     public partial class New_Song : Form
     {
         //private Song song = new Song();
-        private WMPLib.WindowsMediaPlayer player;
+        //private WMPLib.WindowsMediaPlayer player;
 
         private string file1;
         private string file2;
@@ -35,8 +35,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "",
-            BasePath = ""
+            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
+            BasePath = "https://soul-song-782cd.firebaseio.com/"
         };
 
         IFirebaseClient client;
@@ -78,7 +78,7 @@ namespace Project
                 this.WindowState = FormWindowState.Maximized;
             else
                 this.WindowState = FormWindowState.Normal;
-
+            
         }
 
         private void minimize_Butt_Click(object sender, EventArgs e)

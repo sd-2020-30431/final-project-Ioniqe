@@ -26,11 +26,11 @@ namespace Project
 
         //---------------
         // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "";
+        const string subscriptionKey = "c136b8ab43d740bd80735e3be98551a6";
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "";
+            "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
 
         //---------------
 
@@ -55,7 +55,11 @@ namespace Project
                 cameraResolution.Items.Add(r);
             }
 
-            cameraResolution.SelectedIndex = 6;
+            if(cameraResolutions.Count >= 6)
+                cameraResolution.SelectedIndex = 6;
+            else
+                cameraResolution.SelectedIndex = 0;
+
         }
 
         public void MyCamera_OnFrameArrived(object source, FrameArrivedEventArgs e)
@@ -77,7 +81,7 @@ namespace Project
         private void captureButt_Click(object sender, EventArgs e)
         {
 
-            string filename = @"" + count.ToString();
+            string filename = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString();
             myCamera.Capture(filename);
     
             results.Text = "Captured";
@@ -96,7 +100,7 @@ namespace Project
         private void launchEmotionDetection()
         {
             int cnt = count - 1;
-            string imageFilePath = @"" + cnt.ToString() + @".jpg";
+            string imageFilePath = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
 
             if (File.Exists(imageFilePath))
             {
@@ -155,6 +159,7 @@ namespace Project
 
 
                 this.Hide();
+                //Playlist playlist = new Playlist(emotion, this);
                 Playlist playlist = new Playlist(emotion, this);
                 playlist.ShowDialog();
                 //this.Close();
