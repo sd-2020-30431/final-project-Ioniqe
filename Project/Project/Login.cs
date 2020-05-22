@@ -21,8 +21,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "",
+            BasePath = ""
         };
 
         IFirebaseClient client;
