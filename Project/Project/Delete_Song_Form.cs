@@ -17,8 +17,8 @@ namespace Project
     {
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "",
+            BasePath = ""
         };
 
         IFirebaseClient client;
@@ -116,7 +116,6 @@ namespace Project
 
             List<Song> playlist = new List<Song>();
             int counter = 1;
-            //var response = client.Get(@"Song/" + counter);
             var response = client.Get(@"Song/" + counter + "/Name");
 
             while (response.Body != "null")
@@ -182,28 +181,6 @@ namespace Project
 
             return playlist;
         }
-
-        //private List<Song> getSongs()
-        //{
-        //    configure_firebase();
-
-        //    List<Song> playlist = new List<Song>();
-        //    int counter = 1;
-        //    var response = client.Get(@"Song/" + counter);
-
-        //    while (response.Body != "null")
-        //    {
-        //        Song song = new Song();
-
-        //        song = response.ResultAs<Song>();
-        //        playlist.Add(song);
-        //        counter++;
-
-        //        response = client.Get(@"Song/" + counter);
-        //    }
-
-        //    return playlist;
-        //}
 
         private int i = 0;
         private Color dark_blue = Color.FromArgb(18, 23, 39);
