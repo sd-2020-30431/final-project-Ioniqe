@@ -80,13 +80,13 @@ namespace Project
         private void captureButt_Click(object sender, EventArgs e)
         {
 
-            string filename = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString();
+            string filename = @"bin\Debug\Images\Imag" + count.ToString();
             myCamera.Capture(filename);
     
             results.Text = "Captured";
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
-            pictureBox2.Image = Image.FromFile(@"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + count.ToString() + @".jpg");
+            pictureBox2.Image = Image.FromFile(@"bin\Debug\Images\Imag" + count.ToString() + @".jpg");
             count++;
         }
 
@@ -99,7 +99,7 @@ namespace Project
         private void launchEmotionDetection()
         {
             int cnt = count - 1;
-            string imageFilePath = @"B:\poli\an3\sem2\SD\Project\Project\bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
+            string imageFilePath = @"bin\Debug\Images\Image" + cnt.ToString() + @".jpg";
 
             if (File.Exists(imageFilePath))
             {
