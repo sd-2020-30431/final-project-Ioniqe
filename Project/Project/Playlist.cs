@@ -35,8 +35,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "",
-            BasePath = ""
+            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
+            BasePath = "https://soul-song-782cd.firebaseio.com/"
         };
 
         IFirebaseClient client;
@@ -62,6 +62,8 @@ namespace Project
 
         private void UserClickedOnPlay(object sender, EventArgs e)
         {
+            //slider.Value = 0;
+
             pauseSong(currentlyPlaying_pos);
             Song_Form song_form = (Song_Form)sender;
             playCurrentSong(song_form);
@@ -127,31 +129,98 @@ namespace Project
             client = new FireSharp.FirebaseClient(config);
         }
 
+
+
+        private Boolean existsInFile(string name)
+        {
+            string path = @"Downloaded Songs\" + name + ".mp3";
+            return File.Exists(path);
+        }
+
+        private string file1;
+        private string file2;
+        private string file3;
+        private string file4;
+        private string file5;
+        private string file6;
+        private string file7;
+        private string file8;
+        private string file9;
+        private string file10;
+
         private List<Song> getSongs()
         {
             configure_firebase();
 
             List<Song> playlist = new List<Song>();
             int counter = 1;
-            var response = client.Get(@"Song/" + counter + "/Emotion");
 
-            while (response.Body != "null")
+            var responseName = client.Get(@"Song/" + counter + "/Name");
+            var responseEmotion = client.Get(@"Song/" + counter + "/Emotion");
+
+            while (responseName.Body != "null" && responseEmotion.Body != "null")
             {
-                string currEmotion = response.Body.Trim(new char[] { '"' });
-
+                Song song = new Song();
+                string name = responseName.Body.Trim(new char[] { '"' });
+                string currEmotion = responseEmotion.Body.Trim(new char[] { '"' });
 
                 if (currEmotion == emotion)
                 {
+                    if (existsInFile(name))
+                    {
+                        string path = @"Downloaded Songs\" + name + ".mp3";
+                        byte[] data = File.ReadAllBytes(path);
+                        string encoded = Convert.ToBase64String(data);
 
-                    var responseSong = client.Get(@"Song/" + counter);
+                        int size = encoded.Length / 10;
 
-                    Song song = responseSong.ResultAs<Song>();
+                        file1 = encoded.Substring(0, size);
+                        file2 = encoded.Substring(size, size);
+                        file3 = encoded.Substring(2 * size, size);
+                        file4 = encoded.Substring(3 * size, size);
+                        file5 = encoded.Substring(4 * size, size);
+                        file6 = encoded.Substring(5 * size, size);
+                        file7 = encoded.Substring(6 * size, size);
+                        file8 = encoded.Substring(7 * size, size);
+                        file9 = encoded.Substring(8 * size, size);
+                        file10 = encoded.Substring(9 * size);
 
+
+                        Song newSong = new Song()
+                        {
+                            Id = counter.ToString(),
+                            Artist = client.Get(@"Song/" + counter + "/Artist").Body.Trim(new char[] { '"' }),
+                            Emotion = currEmotion,
+                            File1 = file1,
+                            File2 = file2,
+                            File3 = file3,
+                            File4 = file4,
+                            File5 = file5,
+                            File6 = file6,
+                            File7 = file7,
+                            File8 = file8,
+                            File9 = file9,
+                            File10 = file10,
+                            Name = name,
+                            Picture = client.Get(@"Song/" + counter + "/Picture").Body.Trim(new char[] { '"' })
+                        };
+
+                        song = newSong;
+                    }
+                    else
+                    {
+                        var responseSong = client.Get(@"Song/" + counter);
+                        song = responseSong.ResultAs<Song>();
+                    }
                     playlist.Add(song);
                 }
 
+                
                 counter++;
-                response = client.Get(@"Song/" + counter + "/Emotion");
+
+                responseName = client.Get(@"Song/" + counter + "/Name");
+                responseEmotion = client.Get(@"Song/" + counter + "/Emotion");
+
             }
 
             return playlist;
@@ -177,7 +246,6 @@ namespace Project
                     string path = @"Downloaded Songs\" + song.Name + ".mp3";
                     player.URL = path;
                     //player.controls.play(); //play the song
-
 
                     Song_Form sf = new Song_Form(); //display in flowlayoutpanel
                     sf.Song = song;
@@ -238,9 +306,7 @@ namespace Project
                 paused = false;
                 play.Image = new Bitmap(@"icons\pause.png");
 
-                button1_Click(sender, e);
             }
-
 
         }
 
@@ -262,8 +328,29 @@ namespace Project
 
         }
 
+        private void pauseSong(int pos)
+        {
+            int i = 0;
+            foreach (Control control in flowLayoutPanel1.Controls)
+            {
+                if (control.GetType() == typeof(Song_Form))
+                {
+                    if (i == pos)
+                    {
+                        Song_Form sf = (Song_Form)control;
+                        sf.makeButt_visible();
+                        return;
+                    }
+
+                    i++;
+                }
+            }
+        }
+
         private void skip_next_Click(object sender, EventArgs e)
         {
+            //slider.Value = 0;
+
             currentlyPlaying_pos++;
 
             int i = 0;
@@ -298,27 +385,10 @@ namespace Project
 
         }
 
-        private void pauseSong(int pos)
-        {
-            int i = 0;
-            foreach (Control control in flowLayoutPanel1.Controls)
-            {
-                if (control.GetType() == typeof(Song_Form))
-                {
-                    if (i == pos)
-                    {
-                        Song_Form sf = (Song_Form)control;
-                        sf.makeButt_visible();
-                        return;
-                    }
-
-                    i++;
-                }
-            }
-        }
-
         private void skip_back_Click(object sender, EventArgs e)
         {
+            //slider.Value = 0;
+
             currentlyPlaying_pos--;
 
             if (currentlyPlaying_pos == playlist.Count - 1)
@@ -355,52 +425,15 @@ namespace Project
             }
         }
 
-
         private void changeValue(object sender, EventArgs e)
         {
             player.settings.volume = volume.Value;
         }
 
-        private void changePosition(object sender, EventArgs e)
-        {
-            player.controls.currentPosition = slider.Value * (int)player.currentMedia.duration / 100;
-        }
-
-
-
-
-
-        System.Threading.ManualResetEvent _busy = new System.Threading.ManualResetEvent(false);
-        //_busy.Reset(); => pause 
-        //_busy.Set(); => resume
-        private void button1_Click(object sender, EventArgs e)
-        {
-            slider.MaximumValue = (int)player.currentMedia.duration;
-            results.Text = slider.MaximumValue.ToString();
-            backgroundWorker1.RunWorkerAsync();
-        }
-
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-            while (player.controls.currentPosition <= player.currentMedia.duration) //player.currentMedia.duration e 258 indiferent de melodie
-            {
-                    Thread.Sleep(1000);
-                    backgroundWorker1.ReportProgress(0);
-            }
-
-        }
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            slider.Value += 1;
-            results.Text = slider.Value.ToString();
-        }
-
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            MessageBox.Show("Task completed!");
-        }
+        //private void changePosition(object sender, EventArgs e)
+        //{
+        //    player.controls.currentPosition = slider.Value * (int)player.currentMedia.duration / 100;
+        //}
 
     }
 }

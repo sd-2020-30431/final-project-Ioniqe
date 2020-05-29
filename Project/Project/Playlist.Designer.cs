@@ -38,9 +38,7 @@
             this.back_Butt = new System.Windows.Forms.Button();
             this.progressTimer = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
             this.volume = new Bunifu.Framework.UI.BunifuSlider();
-            this.slider = new Bunifu.Framework.UI.BunifuSlider();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -51,8 +49,6 @@
             this.songLabel = new System.Windows.Forms.Label();
             this.artistLabel = new System.Windows.Forms.Label();
             this.bunifuDragControl1 = new Bunifu.Framework.UI.BunifuDragControl(this.components);
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.hide = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.minimize_Butt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maximize_Butt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close_Butt)).BeginInit();
@@ -143,7 +139,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(11)))), ((int)(((byte)(29)))), ((int)(((byte)(49)))));
-            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.volume);
             this.panel1.Controls.Add(this.maximize_Butt);
             this.panel1.Controls.Add(this.close_Butt);
@@ -155,17 +150,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1366, 72);
             this.panel1.TabIndex = 17;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(167, 21);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Visible = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // volume
             // 
@@ -181,21 +165,6 @@
             this.volume.TabIndex = 14;
             this.volume.Value = 50;
             this.volume.ValueChanged += new System.EventHandler(this.changeValue);
-            // 
-            // slider
-            // 
-            this.slider.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.slider.BackColor = System.Drawing.Color.Transparent;
-            this.slider.BackgroudColor = System.Drawing.Color.Gainsboro;
-            this.slider.BorderRadius = 5;
-            this.slider.IndicatorColor = System.Drawing.Color.FromArgb(((int)(((byte)(241)))), ((int)(((byte)(78)))), ((int)(((byte)(90)))));
-            this.slider.Location = new System.Drawing.Point(96, 150);
-            this.slider.MaximumValue = 100;
-            this.slider.Name = "slider";
-            this.slider.Size = new System.Drawing.Size(1178, 30);
-            this.slider.TabIndex = 16;
-            this.slider.Value = 0;
-            this.slider.ValueChanged += new System.EventHandler(this.changePosition);
             // 
             // flowLayoutPanel1
             // 
@@ -229,11 +198,9 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.hide);
             this.panel3.Controls.Add(this.skip_back);
             this.panel3.Controls.Add(this.skip_next);
             this.panel3.Controls.Add(this.play);
-            this.panel3.Controls.Add(this.slider);
             this.panel3.Controls.Add(this.songLabel);
             this.panel3.Controls.Add(this.artistLabel);
             this.panel3.Location = new System.Drawing.Point(3, 524);
@@ -246,7 +213,7 @@
             this.skip_back.BackColor = System.Drawing.Color.Transparent;
             this.skip_back.Image = ((System.Drawing.Image)(resources.GetObject("skip_back.Image")));
             this.skip_back.ImageActive = null;
-            this.skip_back.Location = new System.Drawing.Point(513, 197);
+            this.skip_back.Location = new System.Drawing.Point(513, 173);
             this.skip_back.Name = "skip_back";
             this.skip_back.Size = new System.Drawing.Size(50, 50);
             this.skip_back.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -260,7 +227,7 @@
             this.skip_next.BackColor = System.Drawing.Color.Transparent;
             this.skip_next.Image = ((System.Drawing.Image)(resources.GetObject("skip_next.Image")));
             this.skip_next.ImageActive = null;
-            this.skip_next.Location = new System.Drawing.Point(766, 197);
+            this.skip_next.Location = new System.Drawing.Point(766, 173);
             this.skip_next.Name = "skip_next";
             this.skip_next.Size = new System.Drawing.Size(50, 50);
             this.skip_next.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -274,7 +241,7 @@
             this.play.BackColor = System.Drawing.Color.Transparent;
             this.play.Image = ((System.Drawing.Image)(resources.GetObject("play.Image")));
             this.play.ImageActive = null;
-            this.play.Location = new System.Drawing.Point(629, 186);
+            this.play.Location = new System.Drawing.Point(629, 162);
             this.play.Name = "play";
             this.play.Size = new System.Drawing.Size(70, 70);
             this.play.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -288,7 +255,7 @@
             this.songLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.songLabel.Font = new System.Drawing.Font("Lemon/Milk light", 40F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.songLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.songLabel.Location = new System.Drawing.Point(9, 20);
+            this.songLabel.Location = new System.Drawing.Point(9, 22);
             this.songLabel.Name = "songLabel";
             this.songLabel.Size = new System.Drawing.Size(1318, 72);
             this.songLabel.TabIndex = 18;
@@ -300,7 +267,7 @@
             this.artistLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.artistLabel.Font = new System.Drawing.Font("Lemon/Milk light", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.artistLabel.ForeColor = System.Drawing.Color.Gainsboro;
-            this.artistLabel.Location = new System.Drawing.Point(9, 92);
+            this.artistLabel.Location = new System.Drawing.Point(9, 97);
             this.artistLabel.Name = "artistLabel";
             this.artistLabel.Size = new System.Drawing.Size(1318, 42);
             this.artistLabel.TabIndex = 17;
@@ -311,22 +278,8 @@
             // 
             this.bunifuDragControl1.Fixed = true;
             this.bunifuDragControl1.Horizontal = true;
-            this.bunifuDragControl1.TargetControl = this;
+            this.bunifuDragControl1.TargetControl = this.panel1;
             this.bunifuDragControl1.Vertical = true;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.WorkerReportsProgress = true;
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.backgroundWorker1_ProgressChanged);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // hide
-            // 
-            this.hide.Location = new System.Drawing.Point(81, 147);
-            this.hide.Name = "hide";
-            this.hide.Size = new System.Drawing.Size(1193, 33);
-            this.hide.TabIndex = 23;
             // 
             // Playlist
             // 
@@ -366,7 +319,6 @@
         private System.Windows.Forms.Button back_Butt;
         private System.Windows.Forms.Timer progressTimer;
         private System.Windows.Forms.Panel panel1;
-        private Bunifu.Framework.UI.BunifuSlider slider;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -378,8 +330,5 @@
         private Bunifu.Framework.UI.BunifuImageButton play;
         private Bunifu.Framework.UI.BunifuDragControl bunifuDragControl1;
         private Bunifu.Framework.UI.BunifuSlider volume;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Panel hide;
     }
 }

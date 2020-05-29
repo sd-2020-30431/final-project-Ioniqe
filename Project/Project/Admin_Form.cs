@@ -59,7 +59,10 @@ namespace Project
 
         private void delete_song_Butt_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Delete_Song_Form l = new Delete_Song_Form();
+            l.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -59,6 +59,16 @@ namespace Project
             this.playing = true;
         }
 
+        //public void changeButt_toPlaying()
+        //{
+        //    this.bunifuImageButton1.Image = new Bitmap(@"icons\transparent.png");
+        //}
+
+        //public void changeButt_toPaused()
+        //{
+        //    this.bunifuImageButton1.Image = new Bitmap(@"icons\play-button.png");
+        //}
+
         public void makeButt_invisible()
         {
             this.bunifuImageButton1.Visible = false;
