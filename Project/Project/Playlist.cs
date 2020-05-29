@@ -35,8 +35,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "",
+            BasePath = ""
         };
 
         IFirebaseClient client;
@@ -51,7 +51,7 @@ namespace Project
             captured = form1;
             this.emotion = emotion;
 
-            Song_Form.PlayClick += UserClickedOnPlay; //listener for the buttons from flowlayoutcontrol
+            Song_Form.PlayClick += UserClickedOnPlay; 
 
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
@@ -429,11 +429,6 @@ namespace Project
         {
             player.settings.volume = volume.Value;
         }
-
-        //private void changePosition(object sender, EventArgs e)
-        //{
-        //    player.controls.currentPosition = slider.Value * (int)player.currentMedia.duration / 100;
-        //}
 
     }
 }
