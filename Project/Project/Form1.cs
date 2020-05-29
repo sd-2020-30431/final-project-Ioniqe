@@ -25,12 +25,11 @@ namespace Project
     {
 
         //---------------
-        // Replace <Subscription Key> with your valid subscription key.
-        const string subscriptionKey = "c136b8ab43d740bd80735e3be98551a6";
+        const string subscriptionKey = "";
 
         // replace <myresourcename> with the string found in your endpoint URL
         const string uriBase =
-            "https://eastus.api.cognitive.microsoft.com/face/v1.0/detect";
+            "";
 
         //---------------
 
