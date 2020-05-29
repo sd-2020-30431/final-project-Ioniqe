@@ -35,8 +35,8 @@ namespace Project
 
         IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "5zLz5ZvHjPWZcJXn6JEYkyjN1feGW0bY4YBBzCod",
-            BasePath = "https://soul-song-782cd.firebaseio.com/"
+            AuthSecret = "",
+            BasePath = ""
         };
 
         IFirebaseClient client;
@@ -101,7 +101,7 @@ namespace Project
                 song_string = ofd.FileName;
 
                 byte[] data = File.ReadAllBytes(song_string);
-                string encoded = Convert.ToBase64String(data); //asta trebe pus in Firebase
+                string encoded = Convert.ToBase64String(data);
 
                 int size = encoded.Length / 10;
 
